@@ -1,0 +1,16 @@
+.careerFormTitle{
+    text-align: center;
+}
+.submitForm{
+    float: right;
+}
+.form{
+    width: 50%;
+}
+.formContainer{
+    border: 1px solid rgb(90, 87, 87);
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-top: 20px;
+
+}

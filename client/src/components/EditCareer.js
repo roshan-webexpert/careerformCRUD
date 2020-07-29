@@ -16,10 +16,11 @@ class EditCareer extends Component {
         this.onChangeRejected = this.onChangeRejected.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
-
+// this.onUpdate = this.onUpdate.bind(this);
         this.state = {
+            // careers:[],
             name: '',
-            mobile: '',
+            mobile: '', 
             email: '',
             position: '',
             resume: '',
@@ -36,16 +37,25 @@ class EditCareer extends Component {
         let careerId = this.props.match.params.id;
         axios.get('http://localhost:5000/careers/' + careerId)
             .then((response) => {
+const data = response.data;
                 console.log(response.data);
                 
                 // yesterday on 27 July 2020 working from here
 
-                this.useState({
+
+// this.setState({name:response.data.name});
+// this.setState({mobile:response.data.mobile});
+// this.setState({email:response.data.email});
+// this.setState({position:response.data.position});
+// this.setState({resume:response.data.resume});
+// this.setState({selected:response.data.selected});
+// this.setState({rejected:response.data.rejected});
+                this.setState({
                     // [e.target.name]: e.target.value,
                     name: response.data.name,
                     mobile: response.data.mobile,
                     email: response.data.email,
-                    position: response.data.pcompletedosition,
+                    position: response.data.position,
                     resume: response.data.resume,
                     selected: response.data.selected,
                     rejected: response.data.rejected
@@ -118,6 +128,23 @@ class EditCareer extends Component {
             rejected: !this.state.rejected
         });
     }
+// onEdit(id){
+//     this.setState({
+//         editMode:id
+//     })
+//     let editingItem = this.state.careers.find(career=>{
+//         return career.id === id;
+//     })
+//     this.setState({
+//         name:editingItem.name,
+//         mobile:editingItem.mobile,
+//         email:editingItem.email,
+//         position:editingItem.position,
+//         resume:editingItem.resume,
+//         selected:editingItem.selected,
+//         rejected:editingItem.rejected
+//     })
+// }
 
     onSubmit(e) {
         e.preventDefault();
@@ -136,6 +163,37 @@ class EditCareer extends Component {
             .then(res => console.log(res.data));
         this.props.history.push('/');
     }
+
+// onUpdate(e) {
+//         console.log('event', e);
+//         id=this.state.editMode;
+
+//         const obj = {
+//             name: this.state.name,
+//             mobile: this.state.mobile,
+//             email: this.state.email,
+//             position: this.state.position,
+//             resume: this.state.resume,
+//             selected: this.state.selected,
+//             rejected: this.state.rejected,
+
+
+//         };
+//         axios.post('http://localhost:5000/careers/update/' + id, obj)
+//             .then(res => {
+//                 console.log(res.data)
+// this.setState({
+//     name:'',
+//     mobile:'',
+//     email:'',
+//     position:'',
+//     resume:'',
+//     selected:'',
+//     rejected:''
+// })
+//             });
+//         this.props.history.push('/');
+//     }
 
     onDelete() {
         let careerId = this.props.match.params.id;
@@ -204,7 +262,7 @@ class EditCareer extends Component {
                             <option>Full Stack developer</option>
                         </Input>
                         <Label htmlFor="resume">Upload Your Resume</Label>
-                        <Input type="file"
+                        <Input type="text"
                             name="resume"
                             id="resume"
                             value={this.state.resume}

@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const {MongoClient} = require('mongodb');
 const bodyParser = require('body-parser');
 // const config = require('/config');
 // const Career = require('./models/careerForm');

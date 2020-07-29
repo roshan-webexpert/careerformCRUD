@@ -7,3 +7,6 @@ mongoURI: 'mongodb+srv://adminpannel:4HaS2xHlFouCX9Ww@cluster0-dswl0.mongodb.net
 };
 
 
+//If your password in plain-text is p@ssw0rd'9'!, you would need to encode your password as: p%40ssw0rd%279%27%21
+
+

@@ -24,7 +24,7 @@ const CareerFormSchema = new Schema({
     },
     resume: {
         type: String,
-        required: true
+        required: false
     },
     selected: {
         type: Boolean

@@ -261,7 +261,7 @@ const data = response.data;
                             <option>Software tester</option>
                             <option>Full Stack developer</option>
                         </Input>
-                        <Label htmlFor="resume">Upload Your Resume</Label>
+                        <Label htmlFor="resume">Uploaded Resume</Label>
                         <Input type="text"
                             name="resume"
                             id="resume"

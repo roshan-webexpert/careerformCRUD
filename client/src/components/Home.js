@@ -27,18 +27,24 @@ const Career = (props) => (
       <Link to={"/edit/" + props.career._id}>Edit</Link>
     </td>
     <td>
-      <Button outline color="danger" className="deleteForm" onClick={onDelete}>
+      <Button
+        onClick={() => onDelete(props.career._id)}
+        outline
+        color="danger"
+        className="deleteForm"
+      >
         Delete
       </Button>
     </td>
   </tr>
 );
 
-const onDelete = () => {
+const onDelete = (id) => {
   //   let careerId = this.props.state.params.id;
   axios
     .delete("http://localhost:5000/careers/delete/" + id)
     .then((response) => {
+      console.log(response);
       this.props.history.push("/");
     })
     .catch((err) => {
@@ -57,11 +63,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // const id = response.data.id;
     axios
       .get("http://localhost:5000/careers/")
       .then((response) => {
-        const id = response.data.id;
         this.setState({ careers: response.data });
       })
       .catch((error) => {

@@ -30,6 +30,10 @@ const Career = props => (
         <td>
             <Link to={"/edit/" + props.career._id}>Edit</Link>
         </td>
+        <td>
+<Button outline color="danger" className="deleteForm">Delete</Button>
+
+        </td>
         
     </tr>
 
@@ -155,7 +159,15 @@ class Home extends Component {
     //             console.log(error);
     //         });
     // }
-
+onDelete() {
+        let careerId = this.props.match.params.id;
+        axios.delete('http://localhost:5000/careers/delete/' + careerId)
+            .then(response => {
+                this.props.history.push('/');
+            }).catch(err => {
+                console.log(err)
+            });
+    }
     careerList() {
         return this.state.careers.map((currentCareer, i) => {
             return <Career career={currentCareer} key={i}></Career>;
@@ -181,6 +193,7 @@ class Home extends Component {
                             <th>Position</th>
                             <th>Resume</th>
                             <th>Action</th>
+                            <th>Other</th>
                         </tr>
                     </thead>
                     <tbody>
